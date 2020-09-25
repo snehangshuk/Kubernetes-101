@@ -794,10 +794,12 @@ To install Docker Engine on CentOS:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">---
-$ <strong>sudo yum install -y yum-utils</strong>
-&#8230;&#8203;
----</code></pre>
+<pre>$ *sudo yum install -y yum-utils*
+...
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+...</pre>
 </div>
 </div>
 <div class="olist arabic">
