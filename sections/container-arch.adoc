@@ -69,9 +69,9 @@ to retrieve an image from the image registry and build a container from that ima
 *Docker Engine* is an open source containerization technology for building and containerizing your 
 applications. Docker Engine acts as a client-server application with:
 
-* A server with a long-running daemon process ```dockerd```.
+* A server with a long-running daemon process `dockerd`.
 * APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
-* A command line interface (CLI) client ```docker```.
+* A command line interface (CLI) client `docker`.
 
 The CLI uses Docker APIs to control or interact with the Docker daemon through scripting or direct CLI commands.
 To install Docker Engine on CentOS:
@@ -86,10 +86,10 @@ To install Docker Engine on CentOS:
      https://download.docker.com/linux/centos/docker-ce.repo
   ---
 
-. Install the latest version of Docker Engine and _containerd_
+. Install the latest version of Docker Engine and `containerd`
 . Start Docker
-. To use Docker as a non-root user, you should now consider adding your user to the _docker_ group.
-. Verify that Docker Engine is installed correctly by running the _hello-world_ image.
+. To use Docker as a non-root user, you should now consider adding your user to the `docker` group.
+. Verify that Docker Engine is installed correctly by running the `hello-world` image.
 
 Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use `systemd` to manage 
 which services start when the system boots.
