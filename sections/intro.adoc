@@ -47,6 +47,7 @@ There are many _container engines_ available to manage and execute individual co
 including *Rocket*, *Drawbridge*, *LXC*, *Docker*, and *Podman*.
 
 The following are other major advantages to using containers:
+
 - Low hardware footprint
 - Environment isolation
 - Quick deployment
