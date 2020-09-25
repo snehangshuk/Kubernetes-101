@@ -1,0 +1,70 @@
+### Introducing Container History
+
+Containers have quickly gained popularity in recent years. However, the technology behind
+containers has been around for a relatively long time. In 2001, Linux introduced a project named
+VServer. VServer was the first attempt at running complete sets of processes inside a single server
+with a high degree of isolation.
+
+From VServer, the idea of isolated processes further evolved and became formalized around the
+following features of the Linux kernel:
+
+Namespaces::
+The kernel can isolate specific system resources, usually visible to all processes, by placing
+the resources within a namespace. Inside a namespace, only processes that are members of
+that namespace can see those resources. Namespaces can include resources like network
+interfaces, the process ID list, mount points, IPC resources, and the system's host name
+information.
+Control groups (cgroups)::
+Control groups partition sets of processes and their children into groups to manage and
+limit the resources they consume. Control groups place restrictions on the amount of system
+resources processes might use. Those restrictions keep one process from using too many
+resources on the host.
+Seccomp::
+Developed in 2005 and introduced to containers circa 2014, Seccomp limits how processes
+could use system calls. Seccomp defines a security profile for processes, whitelisting the
+system calls, parameters and file descriptors they are allowed to use.
+
+All of these innovations and features focus around a basic concept: enabling processes to run
+isolated while still accessing system resources. This concept is the foundation of container
+technology and the basis for all container implementations. Nowadays, containers are processes
+in Linux kernel making use of those security features to create an isolated environment. This
+environment forbids isolated processes from misusing system or other container resources.
+
+A common use case of containers is having several replicas for the same service (for example,
+a database server) in the same host. Each replica has isolated resources (file system, ports,
+memory), so no need for the service to handle resource sharing. Isolation guarantees that a
+malfunctioning or harmful service does not impact other services or containers in the same host,
+nor in the underlying system.
+
+### Container Architecture
+
+From the Linux kernel perspective, a container is a process with restrictions. However, instead
+of running a single binary file, a container runs an _image_. An image is a file-system bundle that
+contains all dependencies required to execute a process: files in the file system, installed packages,
+available resources, running processes, and kernel modules.
+
+Running containers use an immutable view of the image, allowing multiple
+containers to reuse the same image simultaneously. As images are files, they can be managed by
+versioning systems, improving automation on container and image provisioning.
+
+Container images need to be _locally_ available for the container runtime to execute them, but the
+images are usually stored and maintained in an _*image repository*_. An image repository is just a
+service - _public_ or _private_ - where images can be stored, searched and retrieved. Other features
+provided by image repositories are remote access, image metadata, authorization or image version
+control.
+
+There are many different image repositories available, each one offering different features:
+
+* https://hub.docker.com[Docker Hub]
+* https://quay.io/[Red Hat Quay]
+* https://cloud.google.com/container-registry/[Google Container Registry]
+* https://aws.amazon.com/ecr/[Amazon Elastic Container Registry]
+
+### Managing Containers with Docker
+
+Containers, images, and image registries need to be able to interact with each other. For example,
+you need to be able to build images and put them into image registries. You also need to be able
+to retrieve an image from the image registry and build a container from that image.
+
+*Docker* is an tool for managing containers and container images and interacting with image registries.
+More on docker CLI.... 
