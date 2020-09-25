@@ -2,6 +2,7 @@
 
 # Kubernetes 101
 :toc: macro
+:toc: left
 :toc-title: Table of Contents
 :toclevels: 5
 :icons: font
@@ -15,7 +16,7 @@ Docs and Application Source code: <TBD>
 
 If you find any issues, report it in the link:https://github.com/snehangshuk/Kubernetes-101/issues[Github repository]. You’re also welcome to send any pull requests and contributions.
 
-toc:left:[]
+toc::[]
 
 include::sections/preface.adoc[]
 
