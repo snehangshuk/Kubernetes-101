@@ -4,8 +4,6 @@ Docs and Application Source code: https://github.com/redhat-developer-demos/kube
 
 If you find any issues, report it in the Github repository. You’re also welcome to send any pull requests and contributions.
 
-:toc:
-
 == Preface
 
 include::preface.adoc[]
