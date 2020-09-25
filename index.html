@@ -789,10 +789,13 @@ To install Docker Engine on CentOS:</p>
 <ol class="arabic">
 <li>
 <p>Install the <em>yum-utils</em> package (which provides the <em>yum-config-manager</em> utility)
-<code>$ sudo yum install -y yum-utils
- $ sudo yum-config-manager \
+[source,bash,subs="normal,attributes"]
+---
+$ sudo yum install -y yum-utils+
+$ sudo yum-config-manager \
    --add-repo \
-   <a href="https://download.docker.com/linux/centos/docker-ce.repo" class="bare">https://download.docker.com/linux/centos/docker-ce.repo</a></code></p>
+   <a href="https://download.docker.com/linux/centos/docker-ce.repo" class="bare">https://download.docker.com/linux/centos/docker-ce.repo</a>
+---</p>
 </li>
 <li>
 <p>Install the latest version of Docker Engine and <em>containerd</em></p>
