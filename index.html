@@ -599,9 +599,36 @@ Furthermore, a traditionally deployed application must be stopped before updatin
 dependencies. To minimize application downtime, organizations design and implement complex
 systems to provide high availability of their applications. Maintaining multiple applications on a
 single host often becomes cumbersome, and any deployment or update has the potential to break
-one of the organization&#8217;s applications.
-Figure 1.1 describes the difference between applications running as containers and applications
-running on the host operating system.</p>
+one of the organization&#8217;s applications.</p>
+</div>
+<div class="paragraph">
+<p>The below figure describes the difference between applications running as containers and applications
+running on the host operating system.
+image::images/container.png[Logo,float="center",align="center"]</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, a software application can be deployed using a container. A container is a set of one
+or more processes that are isolated from the rest of the system. Containers provide many of the
+same benefits as virtual machines, such as security, storage, and network isolation. Containers
+require far fewer hardware resources and are quick to start and terminate. They also isolate the
+libraries and the runtime resources (such as CPU and storage) for an application to minimize the
+impact of any OS update to the host OS.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Open Container Initiative</em> provides a set of industry standards that define a container runtime specification and a container image
+specification.</p>
+</div>
+<div class="paragraph">
+<p>There are many <em>container engines</em> available to manage and execute individual containers,
+including <strong>Rocket</strong>, <strong>Drawbridge</strong>, <strong>LXC</strong>, <strong>Docker</strong>, and <strong>Podman</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The following are other major advantages to using containers:
+- Low hardware footprint
+- Environment isolation
+- Quick deployment
+- Multiple environment deployment
+- Reusability</p>
 </div>
 </div>
 </div>

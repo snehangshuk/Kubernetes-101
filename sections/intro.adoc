@@ -27,5 +27,27 @@ dependencies. To minimize application downtime, organizations design and impleme
 systems to provide high availability of their applications. Maintaining multiple applications on a
 single host often becomes cumbersome, and any deployment or update has the potential to break
 one of the organization's applications.
-Figure 1.1 describes the difference between applications running as containers and applications
+
+The below figure describes the difference between applications running as containers and applications
 running on the host operating system.
+image::images/container.png[Logo,float="center",align="center"]
+
+Alternatively, a software application can be deployed using a container. A container is a set of one
+or more processes that are isolated from the rest of the system. Containers provide many of the
+same benefits as virtual machines, such as security, storage, and network isolation. Containers
+require far fewer hardware resources and are quick to start and terminate. They also isolate the
+libraries and the runtime resources (such as CPU and storage) for an application to minimize the
+impact of any OS update to the host OS.
+
+The _Open Container Initiative_ provides a set of industry standards that define a container runtime specification and a container image
+specification.
+
+There are many _container engines_ available to manage and execute individual containers,
+including *Rocket*, *Drawbridge*, *LXC*, *Docker*, and *Podman*.
+
+The following are other major advantages to using containers:
+- Low hardware footprint
+- Environment isolation
+- Quick deployment
+- Multiple environment deployment
+- Reusability
