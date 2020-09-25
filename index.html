@@ -788,23 +788,17 @@ To install Docker Engine on CentOS:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Install the <em>yum-utils</em> package (which provides the <em>yum-config-manager</em> utility)
-+</p>
+<p>Install the <em>yum-utils</em> package (which provides the <em>yum-config-manager</em> utility)</p>
 <div class="literalblock">
 <div class="content">
-<pre>[source,bash,subs="normal,attributes"]
+<pre>[source,bash]
 ---
 $ sudo yum install -y yum-utils
----</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>[source,bash,subs="normal,attributes"]
----
+...
 $ sudo yum-config-manager \
    --add-repo \
    https://download.docker.com/linux/centos/docker-ce.repo
+...
 ---</pre>
 </div>
 </div>
