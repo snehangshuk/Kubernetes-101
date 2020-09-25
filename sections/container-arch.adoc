@@ -77,10 +77,13 @@ The CLI uses Docker APIs to control or interact with the Docker daemon through s
 To install Docker Engine on CentOS:
 
 . Install the _yum-utils_ package (which provides the _yum-config-manager_ utility)
+
 [source,bash,subs="normal,attributes"]
 ---
-$ sudo yum install -y yum-utils
+$ *sudo yum install -y yum-utils*
+...
 ---
+
 . Install the latest version of Docker Engine and `containerd`
 . Start Docker
 . To use Docker as a non-root user, you should now consider adding your user to the `docker` group.
