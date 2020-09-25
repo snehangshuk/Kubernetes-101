@@ -3,9 +3,8 @@ Latest HTML: http://bit.ly/kubernetes-lab
 Docs and Application Source code: https://github.com/redhat-developer-demos/kubernetes-lab
 
 If you find any issues, report it in the Github repository. You’re also welcome to send any pull requests and contributions.
-
-Table of Contents
-1. Kubernetes - The Basics
-2. Kubernetes - Going further
-
-preface.adoc
+:toc: left
+== Preface
+include::preface.adoc[]
+== Demo
+include::test.adoc[]

@@ -1,5 +1,3 @@
-## Preface
-<hr>
 In the last 3 years, docker and linux containers have become the sensation of the IT industry. The promise of eliminating environment inconsistencies by packaging your software together with all its dependencies (files, libraries, environment variables, runtimes, etc) has driven Linux containers to emerge as a de-facto standard.
 
 Once your application is wrapped in a container, you don’t need to lose time configuring a new environment. Running another "instance" of your application is easy and consumes less computational resources than typical Virtual Machines.
