@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="author" content="Snehangshu Karmakar">
 <title>Kubernetes 101</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -437,9 +438,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Kubernetes 101</h1>
+<div class="details">
+<span id="author" class="author">Snehangshu Karmakar</span><br>
+<span id="email" class="email"><a href="mailto:snehangshu@gmail.com">snehangshu@gmail.com</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_preface">1. Preface</a></li>
+<li><a href="#_demo">2. Demo</a></li>
+<li><a href="#_overview_of_container_technology">3. Overview of Container Technology</a>
+<ul class="sectlevel2">
+<li><a href="#_containerized_applications">3.1. Containerized Applications</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -450,14 +467,6 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 </div>
 <div class="paragraph">
 <p>If you find any issues, report it in the <a href="https://github.com/snehangshuk/Kubernetes-101/issues">Github repository</a>. You’re also welcome to send any pull requests and contributions.</p>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle" class="title">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_preface">1. Preface</a></li>
-<li><a href="#_demo">2. Demo</a></li>
-<li><a href="#_kubernetes_the_basics">3. Kubernetes - The Basics</a></li>
-</ul>
 </div>
 </div>
 </div>
@@ -559,17 +568,48 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_kubernetes_the_basics">3. Kubernetes - The Basics</h2>
+<h2 id="_overview_of_container_technology">3. Overview of Container Technology</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_containerized_applications">3.1. Containerized Applications</h3>
 <div class="paragraph">
-<p>Blah Blah</p>
+<p>Software applications typically depend on other libraries, configuration files, or services that
+are provided by the runtime environment. The traditional runtime environment for a software
+application is a physical host or virtual machine, and application dependencies are installed as part
+of the host.</p>
+</div>
+<div class="paragraph">
+<p>For example, consider a Python application that requires access to a common shared library that
+implements the TLS protocol. Traditionally, a system administrator installs the required package
+that provides the shared library before installing the Python application.</p>
+</div>
+<div class="paragraph">
+<p>The major drawback to traditionally deployed software application is that the application&#8217;s
+dependencies are entangled with the runtime environment. An application may break when any
+updates or patches are applied to the base operating system (OS).</p>
+</div>
+<div class="paragraph">
+<p>For example, an OS update to the TLS shared library removes TLSE1.0 as a supported protocol.
+This breaks the deployed Python application because it is written to use the TLSE1.0 protocol for
+network requests. This forces the system administrator to roll back the OS update to keep the
+application running, preventing other applications from using the benefits of the updated package.
+Therefore, a company developing traditional software applications may require a full set of tests to
+guarantee that an OS update does not affect applications running on the host.
+Furthermore, a traditionally deployed application must be stopped before updating the associated
+dependencies. To minimize application downtime, organizations design and implement complex
+systems to provide high availability of their applications. Maintaining multiple applications on a
+single host often becomes cumbersome, and any deployment or update has the potential to break
+one of the organization&#8217;s applications.
+Figure 1.1 describes the difference between applications running as containers and applications
+running on the host operating system.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-25 13:11:02 +0530
+Last updated 2020-09-25 15:11:57 +0530
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
