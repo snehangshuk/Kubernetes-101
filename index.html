@@ -789,34 +789,21 @@ To install Docker Engine on CentOS:</p>
 <ol class="arabic">
 <li>
 <p>Install the <em>yum-utils</em> package (which provides the <em>yum-config-manager</em> utility)</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">---
-$ sudo yum install -y yum-utils
-$ sudo yum-config-manager \
-   --add-repo \
-   <a href="https://download.docker.com/linux/centos/docker-ce.repo" class="bare">https://download.docker.com/linux/centos/docker-ce.repo</a>
----</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">---</code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Install the latest version of Docker Engine and <code>containerd</code></p>
-</li>
-<li>
-<p>Start Docker</p>
-</li>
-<li>
-<p>To use Docker as a non-root user, you should now consider adding your user to the <code>docker</code> group.</p>
-</li>
-<li>
-<p>Verify that Docker Engine is installed correctly by running the <code>hello-world</code> image.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>$ sudo yum install -y yum-utils
+---
+. Install the latest version of Docker Engine and <code>containerd</code>
+. Start Docker
+. To use Docker as a non-root user, you should now consider adding your user to the <code>docker</code> group.
+. Verify that Docker Engine is installed correctly by running the <code>hello-world</code> image.</p>
 </div>
 <div class="paragraph">
 <p>Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use <code>systemd</code> to manage
