@@ -1,13 +1,26 @@
-= Kubernetes Lab for Java Developers
-Latest HTML: http://bit.ly/kubernetes-lab
-Docs and Application Source code: https://github.com/redhat-developer-demos/kubernetes-lab
+// Author: Snehangshu Karmakar
 
-If you find any issues, report it in the Github repository. You’re also welcome to send any pull requests and contributions.
+# Kubernetes 101
+:toc: macro
+:toc-title: Table of Contents
+:toclevels: 5
+:icons: font
+:data-uri:
+:source-highlighter: highlightjs
+:numbered:
+//define variables
 
-== Preface
+Latest HTML: <TBD> +
+Docs and Application Source code: <TBD>
 
-include::preface.adoc[]
+If you find any issues, report it in the link:https://github.com/snehangshuk/Kubernetes-101/issues[Github repository]. You’re also welcome to send any pull requests and contributions.
 
-== Demo
+toc::[]
 
-include::test.adoc[]
+include::sections/preface.adoc[]
+
+include::sections/test.adoc[]
+
+## Kubernetes - The Basics
+
+Blah Blah
