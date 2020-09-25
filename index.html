@@ -800,21 +800,51 @@ $ sudo yum-config-manager \
 </li>
 <li>
 <p>Install the latest version of Docker Engine and <code>containerd</code></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ sudo yum install docker-ce docker-ce-cli containerd.io</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Start Docker</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ sudo systemctl start docker</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>To use Docker as a non-root user, you should now consider adding your user to the <code>docker</code> group.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+$ newgrp docker</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Verify that Docker Engine is installed correctly by running the <code>hello-world</code> image.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ docker run hello-world</code></pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use <code>systemd</code> to manage
 which services start when the system boots.</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ sudo systemctl enable docker</code></pre>
+</div>
 </div>
 </div>
 </div>

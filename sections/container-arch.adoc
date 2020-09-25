@@ -86,10 +86,36 @@ $ sudo yum-config-manager \
    https://download.docker.com/linux/centos/docker-ce.repo
 ----
 . Install the latest version of Docker Engine and `containerd`
++
+[source,bash,subs="normal,attributes"]
+----
+$ sudo yum install docker-ce docker-ce-cli containerd.io
+----
 . Start Docker
++
+[source,bash,subs="normal,attributes"]
+----
+$ sudo systemctl start docker
+----
 . To use Docker as a non-root user, you should now consider adding your user to the `docker` group.
++
+[source,bash,subs="normal,attributes"]
+----
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+$ newgrp docker 
+----
 . Verify that Docker Engine is installed correctly by running the `hello-world` image.
++
+[source,bash,subs="normal,attributes"]
+----
+$ docker run hello-world
+----
 
 Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use `systemd` to manage 
 which services start when the system boots.
-
++
+[source,bash,subs="normal,attributes"]
+----
+$ sudo systemctl enable docker
+----
