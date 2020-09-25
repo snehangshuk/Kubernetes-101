@@ -21,6 +21,6 @@ include::sections/preface.adoc[]
 
 include::sections/test.adoc[]
 
-//Kubernetes - The Basics
+## Kubernetes - The Basics
 
 include::sections/intro.adoc[]

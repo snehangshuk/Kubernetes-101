@@ -1,4 +1,4 @@
-## Introduction to Container Technology
+### Introduction to Container Technology
 
 Software applications typically depend on other libraries, configuration files, or services that
 are provided by the runtime environment. The traditional runtime environment for a software
