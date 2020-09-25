@@ -1,10 +1,13 @@
-# Kubernetes Lab for Java Developers
+= Kubernetes Lab for Java Developers
 Latest HTML: http://bit.ly/kubernetes-lab
 Docs and Application Source code: https://github.com/redhat-developer-demos/kubernetes-lab
 
 If you find any issues, report it in the Github repository. You’re also welcome to send any pull requests and contributions.
-:toc: left
+:toc:
+
 == Preface
+
 include::preface.adoc[]
 == Demo
+
 include::test.adoc[]
