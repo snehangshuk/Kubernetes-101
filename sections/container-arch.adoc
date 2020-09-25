@@ -79,7 +79,6 @@ To install Docker Engine on CentOS:
 . Install the _yum-utils_ package (which provides the _yum-config-manager_ utility)
 [source,bash,subs="normal,attributes"]
 ---
-
 $ sudo yum install -y yum-utils
 ---
 . Install the latest version of Docker Engine and `containerd`
