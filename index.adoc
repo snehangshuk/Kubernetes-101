@@ -24,3 +24,7 @@ include::sections/test.adoc[]
 
 include::sections/intro.adoc[]
 
+[bibliography]
+== References
+
+- https://www.opencontainers.org/[Home - Open Containers Initiative]
