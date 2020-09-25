@@ -30,6 +30,7 @@ one of the organization's applications.
 
 The below figure describes the difference between applications running as containers and applications
 running on the host operating system.
+
 image::images/container.png[Logo,float="center",align="center"]
 
 Alternatively, a software application can be deployed using a container. A container is a set of one
