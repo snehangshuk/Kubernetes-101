@@ -21,7 +21,6 @@ include::sections/preface.adoc[]
 
 include::sections/test.adoc[]
 
-## Kubernetes - The Basics
+//Kubernetes - The Basics
 
-Blah Blah
-// vim: set syntax=asciidoc:
+include::sections/intro.adoc[]
