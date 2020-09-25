@@ -2,7 +2,6 @@
 
 # Kubernetes 101
 :toc: macro
-:toc: left
 :toc-title: Table of Contents
 :toclevels: 5
 :icons: font
