@@ -24,6 +24,8 @@ include::sections/test.adoc[]
 
 include::sections/intro.adoc[]
 
+include::sections/container-arch.adoc[]
+
 [bibliography]
 == References
 
