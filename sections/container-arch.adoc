@@ -48,7 +48,7 @@ containers to reuse the same image simultaneously. As images are files, they can
 versioning systems, improving automation on container and image provisioning.
 
 Container images need to be _locally_ available for the container runtime to execute them, but the
-images are usually stored and maintained in an _*image repository*_. An image repository is just a
+images are usually stored and maintained in an *_image repository_*. An image repository is just a
 service - _public_ or _private_ - where images can be stored, searched and retrieved. Other features
 provided by image repositories are remote access, image metadata, authorization or image version
 control.
@@ -66,5 +66,26 @@ Containers, images, and image registries need to be able to interact with each o
 you need to be able to build images and put them into image registries. You also need to be able
 to retrieve an image from the image registry and build a container from that image.
 
-*Docker* is an tool for managing containers and container images and interacting with image registries.
-More on docker CLI.... 
+*Docker Engine* is an open source containerization technology for building and containerizing your 
+applications. Docker Engine acts as a client-server application with:
+
+* A server with a long-running daemon process ```dockerd```.
+* APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
+* A command line interface (CLI) client ```docker```.
+
+The CLI uses Docker APIs to control or interact with the Docker daemon through scripting or direct CLI commands.
+To install Docker Engine on CentOS:
+
+. Install the _yum-utils_ package (which provides the _yum-config-manager_ utility)
+  `$ sudo yum install -y yum-utils
+   $ sudo yum-config-manager \
+     --add-repo \
+     https://download.docker.com/linux/centos/docker-ce.repo`
+. Install the latest version of Docker Engine and _containerd_
+. Start Docker
+. To use Docker as a non-root user, you should now consider adding your user to the _docker_ group.
+. Verify that Docker Engine is installed correctly by running the _hello-world_ image.
+
+Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use `systemd` to manage 
+which services start when the system boots.
+

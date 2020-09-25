@@ -732,7 +732,7 @@ versioning systems, improving automation on container and image provisioning.</p
 </div>
 <div class="paragraph">
 <p>Container images need to be <em>locally</em> available for the container runtime to execute them, but the
-images are usually stored and maintained in an <em>*image repository*</em>. An image repository is just a
+images are usually stored and maintained in an <strong><em>image repository</em></strong>. An image repository is just a
 service - <em>public</em> or <em>private</em> - where images can be stored, searched and retrieved. Other features
 provided by image repositories are remote access, image metadata, authorization or image version
 control.</p>
@@ -765,8 +765,52 @@ you need to be able to build images and put them into image registries. You also
 to retrieve an image from the image registry and build a container from that image.</p>
 </div>
 <div class="paragraph">
-<p><strong>Docker</strong> is an tool for managing containers and container images and interacting with image registries.
-More on docker CLI&#8230;&#8203;.</p>
+<p><strong>Docker Engine</strong> is an open source containerization technology for building and containerizing your
+applications. Docker Engine acts as a client-server application with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A server with a long-running daemon process <code><code>dockerd</code></code>.</p>
+</li>
+<li>
+<p>APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.</p>
+</li>
+<li>
+<p>A command line interface (CLI) client <code><code>docker</code></code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The CLI uses Docker APIs to control or interact with the Docker daemon through scripting or direct CLI commands.
+To install Docker Engine on CentOS:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the <em>yum-utils</em> package (which provides the <em>yum-config-manager</em> utility)
+<code>$ sudo yum install -y yum-utils
+ $ sudo yum-config-manager \
+   --add-repo \
+   <a href="https://download.docker.com/linux/centos/docker-ce.repo" class="bare">https://download.docker.com/linux/centos/docker-ce.repo</a></code></p>
+</li>
+<li>
+<p>Install the latest version of Docker Engine and <em>containerd</em></p>
+</li>
+<li>
+<p>Start Docker</p>
+</li>
+<li>
+<p>To use Docker as a non-root user, you should now consider adding your user to the <em>docker</em> group.</p>
+</li>
+<li>
+<p>Verify that Docker Engine is installed correctly by running the <em>hello-world</em> image.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Most current Linux distributions (RHEL, CentOS, Fedora, Ubuntu 16.04 and higher) use <code>systemd</code> to manage
+which services start when the system boots.</p>
 </div>
 </div>
 </div>
