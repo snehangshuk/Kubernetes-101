@@ -121,12 +121,45 @@ To create a repo:
 
 . Sign up for link:https://hub.docker.com/signup[Docker Hub]
 . Click on btn:[Create a Repository] on the Docker Hub welcome page
-. Name it `<your-username>/my-first-repo` as shown below. Select Public:
+. Name it `<your-username>/hello-python` as shown below. Select btn:[Public]:
 +
 image::images/create-repo.png[Docker-create-repo,float="center",align="center"]
 After you have created your repo. You should see:
 +
 image::images/repo.png[Docker-repo,float="center",align="center"]
+. Using a terminal, sign in to Docker Hub by executing the `docker login` command.
++
+[source,bash]
+----
+$ docker login
+----
+. Docker follows the naming convention to identify unofficial images. The image you are creating is an unofficial image. Hence, it should follow that syntax. According to that naming convention, the unofficial image name should be named as follows: `<username>/<image_name>:<tag_name>`. Use the following command to tag the image.
++
+[source, bash]
+----
+$ docker tag hello-python:latest <your-username>/hello-python:latest
+----
+. Upload your tagged image to the repository using the `docker push` command.
++
+[source,bash]
+----
+$ docker push <your-username>/hello-python:latest
+The push refers to repository [docker.io/<your-username>/hello-python]
+The push refers to repository [docker.io/snehangshuk/hello-python]
+eb994fb21d2d: Pushing [==================================================>]   10.3MB
+2bd7d4292559: Pushing [==================================================>]  14.33MB
+bb8562728493: Pushing  2.048kB
+ccbefb30278f: Pushing [==================================================>]  6.996MB
+7a8a38bf5538: Pushing [==================================================>]  4.608kB
+0d77d4546954: Waiting
+...
+latest: digest: sha256:276ba90d879fe5a8fe004b2dfaf48ea7cd9080c32b3e6b1e327f7f18091b6147 size: 2846
+----
++
+In Docker Hub, your repository should have a new `latest` tag available under Tags:
++
+image::images/repo-upload.png[Docker-repo-upload,float="center",align="center"]
+
 
 
 

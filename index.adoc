@@ -10,6 +10,7 @@
 :data-uri:
 :source-highlighter: highlightjs
 :numbered:
+:experimental:
 //define variables
 
 Latest HTML: <TBD> +
