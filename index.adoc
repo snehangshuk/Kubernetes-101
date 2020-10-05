@@ -15,7 +15,7 @@
 Latest HTML: <TBD> +
 Docs and Application Source code: <TBD>
 
-If you find any issues, report it in the link:https://github.com/snehangshuk/Kubernetes-101/issues[Github repository]. You’re also welcome to send any pull requests and contributions.
+If you find any issues, report it in the link:https://github.com/snehangshuk/Kubernetes-101/issues[Github repository]. You are also welcome to send any pull requests and contributions.
 
 
 include::sections/goal.adoc[]
@@ -29,6 +29,7 @@ include::sections/intro.adoc[]
 include::sections/container-arch.adoc[]
 
 [bibliography]
+
 == References
 
 - https://www.opencontainers.org/[Home - Open Containers Initiative]
