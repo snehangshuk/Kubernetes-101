@@ -550,9 +550,6 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <li>
 <p>Operating System</p>
 </li>
-<li>
-<p>Virtual Box or KVM</p>
-</li>
 </ul>
 </div>
 </div>
@@ -579,20 +576,30 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <div class="paragraph">
 <p>Follow the steps to create the Kubernetes cluster:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Login first, which you can do either with a Docker ID or a GitHub account.</p>
 </li>
 <li>
 <p>Click ADD NEW INSTANCE to create node1 of the Kubernetes cluster. This will open a command terminal on left
-hand side with three steps.
-IMPORTANT: Third step is optional will not perform the step.</p>
+hand side with three steps.</p>
 </li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Third step is optional, <strong>DO NOT</strong> perform the step.</p>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Initializes cluster master node:</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -600,7 +607,7 @@ IMPORTANT: Third step is optional will not perform the step.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>That will take a couple of minutes, during which time you’ll see a lot of activity in the terminal.
+<p>That will take a couple of minutes, during which time you will see a lot of activity in the terminal.
 You will see something like this at the end:</p>
 </div>
 <div class="listingblock">
@@ -623,15 +630,15 @@ as root:
 kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Add another instance, click ADD NEW INSTANCE</p>
+<p>Add another instance, click ADD NEW INSTANCE.</p>
 </li>
 <li>
 <p>Join <code>node2</code> by running the following on the node as root. Copy the command from output of initializing Kubernetes master on node1.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -646,7 +653,7 @@ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOME
 </td>
 <td class="content">
 SOMETOKEN, SOMEIPADDRESS, and SOMESHAHASH value can be retireved from from output of initializing Kubernetes master on <code>node1</code>.
-- Initialize cluster networking:
+. Initialize cluster networking:
 </td>
 </tr>
 </table>
