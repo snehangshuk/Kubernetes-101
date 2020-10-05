@@ -469,6 +469,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_managing_containers_with_docker">4.4. Managing Containers with Docker</a></li>
 </ul>
 </li>
+<li><a href="#_containerizing_an_application">5. Containerizing an Application</a>
+<ul class="sectlevel2">
+<li><a href="#_get_the_application_code">5.1. Get the application code</a></li>
+<li><a href="#_run_the_app_locally">5.2. Run the app locally</a></li>
+</ul>
+</li>
 <li><a href="#_references">References</a></li>
 </ul>
 </div>
@@ -497,10 +503,10 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <h2 id="_preface">2. Preface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the last 3 years, docker and linux containers have become the sensation of the IT industry. The promise of eliminating environment inconsistencies by packaging your software together with all its dependencies (files, libraries, environment variables, runtimes, etc) has driven Linux containers to emerge as a de-facto standard.</p>
+<p>In the last 6 years, docker and linux containers have become the sensation of the IT industry. The promise of eliminating environment inconsistencies by packaging your software together with all its dependencies (files, libraries, environment variables, runtimes, etc) has driven Linux containers to emerge as a de-facto standard.</p>
 </div>
 <div class="paragraph">
-<p>Once your application is wrapped in a container, you don’t need to lose time configuring a new environment. Running another "instance" of your application is easy and consumes less computational resources than typical Virtual Machines.</p>
+<p>Once your application is wrapped in a container, you do not need to lose time configuring a new environment. Running another "instance" of your application is easy and consumes less computational resources than typical Virtual Machines.</p>
 </div>
 <div class="paragraph">
 <p>Even though containers consume fewer computational resources, a single machine running a dozen containers is not an ideal scenario for a professional "production environment" --- running many containers on a single machine can lead to several issues.</p>
@@ -514,7 +520,7 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <p>The quantity of active containers are limited by the "size" of your hardware</p>
 </li>
 <li>
-<p>Unlike a "cloud environment" you can’t move the workloads to where you want</p>
+<p>Unlike a "cloud environment" you can not move the workloads to where you want</p>
 </li>
 <li>
 <p>The one machine becomes the SPOF (Single Point of Failure) of your application.</p>
@@ -533,7 +539,7 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This lab offers developers a hands-on session with Kubernetes, from the basics concepts, to adding Java based microservices, to service scaling, to perform rolling deployments. This is a BYOL (bring your own laptop) session, so bring your Windows, OSX, or Linux laptop and be ready to dig into a tool that promises to be at the forefront of our industry for some time to come.</p>
+<p>This lab offers developers a hands-on session with Kubernetes, from the basics concepts, to adding Python Flask based application, to service scaling, to perform rolling deployments. This is a BYOL (bring your own laptop) session, so bring your Windows, OSX, or Linux laptop and be ready to dig into a tool that promises to be at the forefront of our industry for some time to come.</p>
 </div>
 </div>
 </div>
@@ -571,7 +577,7 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <div class="sect3">
 <h4 id="_start_the_kubernetes_cluster">3.2.2. Start the Kubernetes cluster</h4>
 <div class="paragraph">
-<p>Play with Kubernetes is a playground which allows users to run K8s clusters in a matter of seconds. Browse to open <a href="https://labs.play-with-k8s.com/">Play with Kubernetes</a></p>
+<p>Play with Kubernetes is a playground which allows users to run Kubernetes clusters in a matter of seconds. Browse to open <a href="https://labs.play-with-k8s.com/">Play with Kubernetes</a></p>
 </div>
 <div class="paragraph">
 <p>Follow the steps to create the Kubernetes cluster:</p>
@@ -579,14 +585,11 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Login first, which you can do either with a Docker ID or a GitHub account.</p>
+<p>btn:[Login] first, which you can do either with a Docker ID or a GitHub account.</p>
 </li>
 <li>
-<p>Click ADD NEW INSTANCE to create node1 of the Kubernetes cluster. This will open a command terminal on left
-hand side with three steps.</p>
-</li>
-</ol>
-</div>
+<p>Click btn:[+ADD NEW INSTANCE] to create <code>node1</code> of the Kubernetes cluster. This will open a command terminal on left
+hand side that shows three steps.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -601,8 +604,7 @@ hand side with three steps.</p>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Initializes cluster master node:</p>
 <div class="listingblock">
@@ -636,10 +638,10 @@ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOME
 </div>
 </li>
 <li>
-<p>Add another instance, click ADD NEW INSTANCE.</p>
+<p>Add another instance, <code>node2</code>. Click btn:[+ADD NEW INSTANCE].</p>
 </li>
 <li>
-<p>Join <code>node2</code> by running the following on the node as root. Copy the command from output of initializing Kubernetes master on node1.</p>
+<p>Join <code>node2</code> by running the following on the node as root. Copy the command from output of initializing Kubernetes master on <code>node1</code>.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</code></pre>
@@ -682,7 +684,7 @@ daemonset "weave-net" created</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Your cluster is set up!</p>
+<p>Your Kubernetes cluster is set up!</p>
 </div>
 </div>
 </div>
@@ -964,6 +966,95 @@ which services start when the system boots.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_containerizing_an_application">5. Containerizing an Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section you will take some source code, verify it runs locally, and then create a Docker image of the application.
+The sample application used is a very simple Flask web application; if you want to test it locally, you will need Python installed.
+Otherwise, you can skip to the "Create a Dockerfile" section.</p>
+</div>
+<div class="sect2">
+<h3 id="_get_the_application_code">5.1. Get the application code</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use <code>git</code> to clone the repository to your local machine:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ git clone <a href="https://github.com/&lt;TBD&gt" class="bare">https://github.com/&lt;TBD&gt</a>;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change to the app directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ cd hello-python/app</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>View the <code>app.py</code> which the main file that print out a hello message.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="python" class="language-python hljs">from flask import Flask
+app = Flask(<em>name</em>)
+
+@app.route("/")
+def hello():
+    return "Hello from Python!"
+
+if <em>name</em> == "<em>main</em>":
+    app.run(host='0.0.0.0')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>requirements.txt</code> file contains the list of packages needed by the <code>app.py</code> and will be used by pip to install the Flask library.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_the_app_locally">5.2. Run the app locally</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use <code>virtualenv</code> (or <code>pyenv</code>) to install your dependencies in a virtual environment.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ python3 -m venv venv
+$ cd venv
+$ source bin/activate
+&lt;venv&gt;$</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now install the dependencies required by the Python app.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">&lt;venv&gt;$ pip install -r requirements.txt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the Python app locally:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">&lt;venv&gt;$ python app.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will start a development web server hosting your application, which you will be able to see by navigating to <a href="http://localhost:5000" class="bare">http://localhost:5000</a>. Because port 5000 is the default port for the development server, we did not need to specify it.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_references">References</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -978,7 +1069,7 @@ which services start when the system boots.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-05 13:12:10 +0530
+Last updated 2020-10-05 16:08:39 +0530
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

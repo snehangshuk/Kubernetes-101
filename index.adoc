@@ -28,6 +28,8 @@ include::sections/intro.adoc[]
 
 include::sections/container-arch.adoc[]
 
+include::sections/containerization.adoc[]
+
 [bibliography]
 
 == References

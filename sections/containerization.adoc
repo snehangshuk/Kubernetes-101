@@ -1,0 +1,70 @@
+## Containerizing an Application
+
+In this section you will take some source code, verify it runs locally, and then create a Docker image of the application. 
+The sample application used is a very simple Flask web application; if you want to test it locally, you will need Python installed. 
+Otherwise, you can skip to the "Create a Dockerfile" section.
+
+### Get the application code
+
+. Use `git` to clone the repository to your local machine:
++  
+[source,bash,subs="normal,attributes"]
+----
+$ git clone https://github.com/<TBD>
+----
+. Change to the app directory:
++  
+[source,bash,subs="normal,attributes"]
+----
+$ cd hello-python/app
+----
+. View the `app.py` which the main file that print out a hello message.
++
+[source,python,subs="normal,attributes"]
+----
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello from Python!"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+----
++
+The `requirements.txt` file contains the list of packages needed by the `app.py` and will be used by pip to install the Flask library.
+
+### Run the app locally
+
+. Use `virtualenv` (or `pyenv`) to install your dependencies in a virtual environment.
++  
+[source,bash,subs="normal,attributes"]
+----
+$ python3 -m venv venv
+$ cd venv
+$ source bin/activate
+<venv>$
+----
+. Now install the dependencies required by the Python app.
++  
+[source,bash,subs="normal,attributes"]
+----
+<venv>$ pip install -r requirements.txt
+----
+. Run the Python app locally:
++  
+[source,bash,subs="normal,attributes"]
+----
+<venv>$ python app.py
+----
++
+This will start a development web server hosting your application, which you will be able to see by navigating to http://localhost:5000. Because port 5000 is the default port for the development server, we did not need to specify it.
+
+
+
+
+
+
+
+
