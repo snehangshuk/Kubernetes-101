@@ -70,7 +70,7 @@ $ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SO
 TIP: SOMETOKEN, SOMEIPADDRESS, and SOMESHAHASH value can be retireved from from output of initializing Kubernetes master on `node1`.
 
 . Initialize cluster networking:
-+  
++
 [source,bash,subs="normal,attributes"]
 ----
 $ kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
