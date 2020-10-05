@@ -1,0 +1,3 @@
+## Goal
+
+The goal of this codelab is for you to turn your code (a simple Hello World flask app) into a replicated application running on Kubernetes. We will show you how to take code that you have developed on your machine, turn it into a Docker container image, and then run that image on link:https://azure.microsoft.com/en-in/services/kubernetes-service/[Azure Kubernetes Service].

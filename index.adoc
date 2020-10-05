@@ -18,9 +18,11 @@ Docs and Application Source code: <TBD>
 If you find any issues, report it in the link:https://github.com/snehangshuk/Kubernetes-101/issues[Github repository]. You’re also welcome to send any pull requests and contributions.
 
 
+include::sections/goal.adoc[]
+
 include::sections/preface.adoc[]
 
-include::sections/test.adoc[]
+include::sections/setup.adoc[]
 
 include::sections/intro.adoc[]
 
