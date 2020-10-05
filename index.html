@@ -584,35 +584,38 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <li>
 <p>Click ADD NEW INSTANCE to create node1 of the Kubernetes cluster. This will open a command terminal on left
 hand side with three steps.</p>
-</li>
-</ol>
-</div>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Third step is optional, <strong>DO NOT</strong> perform the step.</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Initializes cluster master node:</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16</pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>That will take a couple of minutes, during which time you will see a lot of activity in the terminal.
 You will see something like this at the end:</p>
 </div>
+</li>
+</ol>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">Your Kubernetes master has initialized successfully!
+<pre>Your Kubernetes master has initialized successfully!
 
 To start using your cluster, you need to run (as a regular user):
 
@@ -622,12 +625,12 @@ To start using your cluster, you need to run (as a regular user):
 
 You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  <a href="http://kubernetes.io/docs/admin/addons/" class="bare">http://kubernetes.io/docs/admin/addons/</a>
+  http://kubernetes.io/docs/admin/addons/
 
 You can now join any number of machines by running the following on each node
 as root:
 
-kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</code></pre>
+kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -637,12 +640,9 @@ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOME
 </li>
 <li>
 <p>Join <code>node2</code> by running the following on the node as root. Copy the command from output of initializing Kubernetes master on node1.</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>$ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -653,11 +653,13 @@ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOME
 </td>
 <td class="content">
 SOMETOKEN, SOMEIPADDRESS, and SOMESHAHASH value can be retireved from from output of initializing Kubernetes master on <code>node1</code>.
-. Initialize cluster networking:
 </td>
 </tr>
 </table>
 </div>
+</li>
+<li>
+<p>Initialize cluster networking:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl apply -f <a href="https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml" class="bare">https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml</a></code></pre>
@@ -666,14 +668,17 @@ SOMETOKEN, SOMEIPADDRESS, and SOMESHAHASH value can be retireved from from outpu
 <div class="paragraph">
 <p>You will see an output like this:</p>
 </div>
+</li>
+</ol>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">serviceaccount "weave-net" created
+<pre>serviceaccount "weave-net" created
 clusterrole "weave-net" created
 clusterrolebinding "weave-net" created
 role "weave-net" created
 rolebinding "weave-net" created
-daemonset "weave-net" created</code></pre>
+daemonset "weave-net" created</pre>
 </div>
 </div>
 <div class="paragraph">

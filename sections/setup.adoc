@@ -23,11 +23,13 @@ Follow the steps to create the Kubernetes cluster:
 . Login first, which you can do either with a Docker ID or a GitHub account.
 . Click ADD NEW INSTANCE to create node1 of the Kubernetes cluster. This will open a command terminal on left
 hand side with three steps.
++
 [IMPORTANT]
 ====
 Third step is optional, *DO NOT* perform the step.
 ====
 . Initializes cluster master node:
++
 [source,bash,subs="normal,attributes"]
 ----
 $ kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
@@ -54,13 +56,17 @@ as root:
 kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH
 ----
 . Add another instance, click ADD NEW INSTANCE.
++  
 . Join `node2` by running the following on the node as root. Copy the command from output of initializing Kubernetes master on node1.
++  
 [source,bash,subs="normal,attributes"]
 ----
 $ kubeadm join --token SOMETOKEN SOMEIPADDRESS --discovery-token-ca-cert-hash SOMESHAHASH
 ----
 TIP: SOMETOKEN, SOMEIPADDRESS, and SOMESHAHASH value can be retireved from from output of initializing Kubernetes master on `node1`.
+
 . Initialize cluster networking:
++  
 [source,bash,subs="normal,attributes"]
 ----
 $ kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
