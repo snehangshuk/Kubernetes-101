@@ -74,17 +74,17 @@ Deactivate the virtual environment after you have tested locally.
 Now that you have verified the source code works, the first step in containerizing the application is to create a `Dockerfile`.
 
 In the `hello-python/app` directory, create a file named Dockerfile with the following contents and save it:
-[source,bash,subs="normal,attributes"]
+[source,bash]
 ----
-FROM python:3.8 <1>
+FROM python:3.8 # <1>
 
-RUN mkdir /app <2>
-WORKDIR /app <3>
-ADD . /app/ <4>
-RUN pip install -r requirements.txt <5>
+RUN mkdir /app # <2>
+WORKDIR /app # <3>
+ADD . /app/ # <4>
+RUN pip install -r requirements.txt # <5>
 
-EXPOSE 5000 <6>
-CMD ["python", "/app/app.py"] <7>
+EXPOSE 5000 # <6>
+CMD ["python", "/app/app.py"] # <7>
 ----
 <1> Get Python base image for version 3.8 from Docker Hub
 <2> Inside the image, create a directory named app
