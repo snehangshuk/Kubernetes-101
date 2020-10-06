@@ -13,6 +13,7 @@ This section describes what, how, and where to install the software needed for t
 Make sure to have the following tools/packages installed:
 
 - GIT
+- link:https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest[Azure CLI]
 
 #### Start the Kubernetes cluster
 

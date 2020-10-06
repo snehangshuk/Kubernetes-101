@@ -1,0 +1,68 @@
+## Overview of Kubernetes and AKS
+
+### Limitations of Containers
+
+Containers provide an easy way to package and run services. As the number of containers
+managed by an organization grows, the work of manually starting them rises exponentially along
+with the need to quickly respond to external demands.
+
+When using containers in a production environment, enterprises often require:
+
+* Easy communication between a large number of services.
+* Resource limits on applications regardless of the number of containers running them.
+* Respond to application usage spikes to increase or decrease running containers.
+* React to service deterioration.
+* Gradually roll out a new release to a set of users.
+
+Enterprises often require a container orchestration technology because container runtimes (such
+as `Docker`) do not adequately address the above requirements.
+
+### Kubernetes Overview
+
+Kubernetes is an orchestration service that simplifies the deployment, management, and scaling of
+containerized applications. A Kubernetes application is an application that is both deployed on 
+Kubernetes and managed using the Kubernetes APIs and `kubectl` tooling.
+
+The smallest unit manageable in Kubernetes is a pod. A pod consists of one or more containers
+with its storage resources and IP that represent a single application. Kubernetes also uses pods to
+orchestrate the containers inside it and to limit its resources as a single unit.
+
+### Kubernetes Features
+
+Kubernetes offers the following features on top of a container infrastructure:
+
+Service discovery and load balancing::
+Kubernetes enables inter-service communication by assigning a single DNS entry to each set
+of containers. This way, the requesting service only needs to know the target's DNS name,
+allowing the cluster to change the container's location and IP address, leaving the service
+unaffected. This permits load-balancing the request across the pool of containers providing
+the service. For example, Kubernetes can evenly split incoming requests to a MySQL service
+taking into account the availability of the pods.
+Horizontal scaling::
+Applications can scale up and down manually or automatically with configuration set either
+with the Kubernetes command-line interface or the web UI.
+Self-healing::
+Kubernetes can use user-defined health checks to monitor containers to restart and
+reschedule them in case of failure.
+Automated rollout::
+Kubernetes can gradually roll updates out to your application's containers while checking their
+status. If something goes wrong during the rollout, Kubernetes can roll back to the previous
+iteration of the deployment.
+Secrets and configuration management::
+You can manage configuration settings and secrets of your applications without rebuilding
+containers. Application secrets can be user names, passwords, and service endpoints; any
+configuration settings that need to be kept private.
+Operators::
+Operators is a method of packaging, deploying and managing a Kubernetes application. You can 
+find ready-made operators on link:https://operatorhub.io/[OperatorHub.io] to suit your use case.
+
+### Azure Kubernetes Service (AKS)
+
+Azure Kubernetes Service(AKS) is a managed Kubernetes offering that further simplifies 
+container-based application deployment and management. AKS reduces the complexity and operational 
+overhead of managing Kubernetes by offloading much of that responsibility to Azure. 
+As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you.
+
+The Kubernetes masters are managed by Azure. You only manage and maintain the agent nodes. 
+As a managed Kubernetes service, AKS is free - you only pay for the agent nodes within your clusters, 
+not for the masters.

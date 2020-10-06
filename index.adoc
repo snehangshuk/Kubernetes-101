@@ -31,6 +31,8 @@ include::sections/container-arch.adoc[]
 
 include::sections/containerization.adoc[]
 
+include::sections/kubernetes-overview.adoc[]
+
 [bibliography]
 
 == References

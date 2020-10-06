@@ -482,6 +482,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_overview_of_kubernetes_and_aks">6. Overview of Kubernetes and AKS</a>
+<ul class="sectlevel2">
+<li><a href="#_limitations_of_containers">6.1. Limitations of Containers</a></li>
+<li><a href="#_kubernetes_overview">6.2. Kubernetes Overview</a></li>
+<li><a href="#_kubernetes_features">6.3. Kubernetes Features</a></li>
+<li><a href="#_azure_kubernetes_service_aks">6.4. Azure Kubernetes Service (AKS)</a></li>
+</ul>
+</li>
 <li><a href="#_references">References</a></li>
 </ul>
 </div>
@@ -577,6 +585,9 @@ Docs and Application Source code: &lt;TBD&gt;</p>
 <ul>
 <li>
 <p>GIT</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest">Azure CLI</a></p>
 </li>
 </ul>
 </div>
@@ -988,7 +999,7 @@ Otherwise, you can skip to the "Create a Dockerfile" section.</p>
 <p>Use <code>git</code> to clone the repository to your local machine:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ git clone <a href="https://github.com/&lt;TBD&gt" class="bare">https://github.com/&lt;TBD&gt</a>;</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ git clone <a href="https://github.com/snehangshuk/hello-python.git" class="bare">https://github.com/snehangshuk/hello-python.git</a></code></pre>
 </div>
 </div>
 </li>
@@ -996,7 +1007,7 @@ Otherwise, you can skip to the "Create a Dockerfile" section.</p>
 <p>Change to the app directory:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ cd hello-python/app</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ cd hello-python/src</code></pre>
 </div>
 </div>
 </li>
@@ -1016,7 +1027,7 @@ if <em>name</em> == "<em>main</em>":
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>requirements.txt</code> file contains the list of packages needed by the <code>app.py</code> and will be used by pip to install the Flask library.</p>
+<p>The <code>requirements.txt</code> file contains the list of packages needed by the <code>app.py</code> and will be used by <code>pip</code> to install the Flask library.</p>
 </div>
 </li>
 </ol>
@@ -1031,8 +1042,7 @@ if <em>name</em> == "<em>main</em>":
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ python3 -m venv venv
-$ cd venv
-$ source bin/activate
+$ source venv/bin/activate
 &lt;venv&gt;$</code></pre>
 </div>
 </div>
@@ -1075,7 +1085,7 @@ $ source bin/activate
 <p>Now that you have verified the source code works, the first step in containerizing the application is to create a <code>Dockerfile</code>.</p>
 </div>
 <div class="paragraph">
-<p>In the <code>hello-python/app</code> directory, create a file named Dockerfile with the following contents and save it:</p>
+<p>In the <code>hello-python/src</code> directory, create a file named Dockerfile with the following contents and save it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1126,7 +1136,7 @@ CMD ["python", "/app/app.py"] <i class="conum" data-value="7"></i><b>(7)</b></co
 <div class="sect3">
 <h4 id="_create_the_docker_image">5.3.2. Create the Docker image</h4>
 <div class="paragraph">
-<p>At your command line or shell, in the <code>hello-python/app</code> directory, build the image with the following command:</p>
+<p>At your command line or shell, in the <code>hello-python/src</code> directory, build the image with the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1233,6 +1243,118 @@ latest: digest: sha256:276ba90d879fe5a8fe004b2dfaf48ea7cd9080c32b3e6b1e327f7f180
 </div>
 </div>
 <div class="sect1">
+<h2 id="_overview_of_kubernetes_and_aks">6. Overview of Kubernetes and AKS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_limitations_of_containers">6.1. Limitations of Containers</h3>
+<div class="paragraph">
+<p>Containers provide an easy way to package and run services. As the number of containers
+managed by an organization grows, the work of manually starting them rises exponentially along
+with the need to quickly respond to external demands.</p>
+</div>
+<div class="paragraph">
+<p>When using containers in a production environment, enterprises often require:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy communication between a large number of services.</p>
+</li>
+<li>
+<p>Resource limits on applications regardless of the number of containers running them.</p>
+</li>
+<li>
+<p>Respond to application usage spikes to increase or decrease running containers.</p>
+</li>
+<li>
+<p>React to service deterioration.</p>
+</li>
+<li>
+<p>Gradually roll out a new release to a set of users.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Enterprises often require a container orchestration technology because container runtimes (such
+as <code>Docker</code>) do not adequately address the above requirements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kubernetes_overview">6.2. Kubernetes Overview</h3>
+<div class="paragraph">
+<p>Kubernetes is an orchestration service that simplifies the deployment, management, and scaling of
+containerized applications. A Kubernetes application is an application that is both deployed on
+Kubernetes and managed using the Kubernetes APIs and <code>kubectl</code> tooling.</p>
+</div>
+<div class="paragraph">
+<p>The smallest unit manageable in Kubernetes is a pod. A pod consists of one or more containers
+with its storage resources and IP that represent a single application. Kubernetes also uses pods to
+orchestrate the containers inside it and to limit its resources as a single unit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kubernetes_features">6.3. Kubernetes Features</h3>
+<div class="paragraph">
+<p>Kubernetes offers the following features on top of a container infrastructure:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Service discovery and load balancing</dt>
+<dd>
+<p>Kubernetes enables inter-service communication by assigning a single DNS entry to each set
+of containers. This way, the requesting service only needs to know the target&#8217;s DNS name,
+allowing the cluster to change the container&#8217;s location and IP address, leaving the service
+unaffected. This permits load-balancing the request across the pool of containers providing
+the service. For example, Kubernetes can evenly split incoming requests to a MySQL service
+taking into account the availability of the pods.</p>
+</dd>
+<dt class="hdlist1">Horizontal scaling</dt>
+<dd>
+<p>Applications can scale up and down manually or automatically with configuration set either
+with the Kubernetes command-line interface or the web UI.</p>
+</dd>
+<dt class="hdlist1">Self-healing</dt>
+<dd>
+<p>Kubernetes can use user-defined health checks to monitor containers to restart and
+reschedule them in case of failure.</p>
+</dd>
+<dt class="hdlist1">Automated rollout</dt>
+<dd>
+<p>Kubernetes can gradually roll updates out to your application&#8217;s containers while checking their
+status. If something goes wrong during the rollout, Kubernetes can roll back to the previous
+iteration of the deployment.</p>
+</dd>
+<dt class="hdlist1">Secrets and configuration management</dt>
+<dd>
+<p>You can manage configuration settings and secrets of your applications without rebuilding
+containers. Application secrets can be user names, passwords, and service endpoints; any
+configuration settings that need to be kept private.</p>
+</dd>
+<dt class="hdlist1">Operators</dt>
+<dd>
+<p>Operators is a method of packaging, deploying and managing a Kubernetes application. You can
+find ready-made operators on <a href="https://operatorhub.io/">OperatorHub.io</a> to suit your use case.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_azure_kubernetes_service_aks">6.4. Azure Kubernetes Service (AKS)</h3>
+<div class="paragraph">
+<p>Azure Kubernetes Service(AKS) is a managed Kubernetes offering that further simplifies
+container-based application deployment and management. AKS reduces the complexity and operational
+overhead of managing Kubernetes by offloading much of that responsibility to Azure.
+As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you.</p>
+</div>
+<div class="paragraph">
+<p>The Kubernetes masters are managed by Azure. You only manage and maintain the agent nodes.
+As a managed Kubernetes service, AKS is free - you only pay for the agent nodes within your clusters,
+not for the masters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_references">References</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -1247,7 +1369,7 @@ latest: digest: sha256:276ba90d879fe5a8fe004b2dfaf48ea7cd9080c32b3e6b1e327f7f180
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-05 18:49:52 +0530
+Last updated 2020-10-06 11:19:08 +0530
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
