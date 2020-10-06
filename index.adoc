@@ -38,3 +38,5 @@ include::sections/kubernetes-overview.adoc[]
 == References
 
 - https://www.opencontainers.org/[Home - Open Containers Initiative]
+- https://kubernetes.io/[Production-Grade Container Orchestration - Kubernetes]
+- https://docs.microsoft.com/en-us/azure/aks/[Azure Kubernetes Service (AKS)]

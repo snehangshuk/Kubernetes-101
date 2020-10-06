@@ -58,7 +58,7 @@ find ready-made operators on link:https://operatorhub.io/[OperatorHub.io] to sui
 
 ### Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service(AKS) is a managed Kubernetes offering that further simplifies 
+_Azure Kubernetes Service (AKS)_ is a managed Kubernetes offering that further simplifies 
 container-based application deployment and management. AKS reduces the complexity and operational 
 overhead of managing Kubernetes by offloading much of that responsibility to Azure. 
 As a hosted Kubernetes service, Azure handles critical tasks like health monitoring and maintenance for you.
