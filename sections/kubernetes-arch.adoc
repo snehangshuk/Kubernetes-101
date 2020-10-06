@@ -1,5 +1,7 @@
 ## Kubernetes Architecture
 
+### Kubernetes Components
+
 In previous section we saw that Kubernetes is an orchestration service that simplifies the
 deployment, management, and scaling of containerized applications. One of the main advantages
 of using Kubernetes is that it uses several nodes to ensure the resiliency and scalability of its
@@ -9,7 +11,7 @@ those roles are usually segregated for increased stability.
 
 [caption=""]
 .Kubernetes Terminology
-[cols=2*,options="header"]
+[cols="20,80",options="header"]
 |===
 |TERM
 |DEFINITION
@@ -23,7 +25,7 @@ Master nodes provide basic cluster services such as APIs or controllers.
 
 |Worker Node
 |Also named *Compute Node*, worker nodes execute workloads for the cluster.
-Application pods are scheduled onto worker nodes.
+Application *Pods* are scheduled onto worker nodes.
 
 |Resource
 |Resources are any kind of component definition managed by Kubernetes.
@@ -31,9 +33,11 @@ Resources contain the configuration of the managed component (for
 example, the role assigned to a node), and the current state of the
 component (for example, if the node is available).
 
-|Controller
-|A controller is a Kubernetes process that watches resources and makes
-changes attempting to move the current state towards the desired state.
+|Control Plane
+|The control plane manages the worker nodes and the Pods in the cluster.
+In production environments, the control plane usually runs across multiple 
+computers and a cluster usually runs multiple nodes, providing 
+fault-tolerance and high availability.
 
 |Label
 |A key-value pair that can be assigned to any Kubernetes resource. Selectors
@@ -43,4 +47,79 @@ use labels to filter eligible resources for scheduling and other operations.
 |A scope for Kubernetes resources and processes, so that resources with the
 same name can be used in different boundaries.
 |===
+
+image::images/components-of-kubernetes.svg[Components of Kubernetes,float="center",aling="center"]
+
+#### Control Plane Components
+
+The control plane's components make decisions about the cluster; for example,
+schedulling, as well as detecting, and responding to cluster events.
+
+Control plane components can be run on any machine in the cluster. 
+However, for simplicity, set up scripts typically start all control plane 
+components on the same machine, and do not run user containers on this machine.
+
+[caption=""]
+.Control plane components
+[cols="20,80",options="header"]
+|===
+|COMPONENT
+|PURPOSE
+
+|kube-apiserver
+|The API server is a component of the Kubernetes control plane that exposes the 
+Kubernetes API. The API server is the front end for the Kubernetes control plane.
+
+|etcd
+|Consistent and highly-available key value store used as Kubernetes' backing store 
+for all cluster data.
+
+|kube-scheduler
+|Control plane component that watches for newly created Pods with no assigned node,
+and selects a node for them to run on.
+
+|kube-controller-manager
+|Control Plane component that runs controller processes. A controller is a Kubernetes 
+process that watches resources and makes changes attempting to move the current state 
+towards the desired state.
+
+|cloud-controller-manager
+|The cloud controller manager lets you link your cluster into your cloud provider's API.
+The cloud-controller-manager only runs controllers that are specific to your cloud provider.
+If you are running Kubernetes on your own premises, or in a learning environment inside 
+your own PC, the cluster does not have a cloud controller manager.
+|===
+
+#### Node Components
+
+Node components run on every node, maintaining running pods and providing the Kubernetes 
+runtime environment.
+
+[caption=""]
+.Node components
+[cols="20,80",options="header"]
+|===
+|COMPONENT
+|PURPOSE
+
+|kubelet
+|It ensures that containers are running in a Pod. The kubelet takes a set of PodSpecs 
+and ensures that the containers described in those PodSpecs are running and healthy.
+
+|kube-proxy
+|It is a network proxy that runs on each node in your cluster. kube-proxy uses the 
+operating system packet filtering layer to allow network communication to your Pods.
+
+|Container runtime
+|The container runtime is the software that is responsible for running containers.
+Kubernetes supports several container runtimes: *Docker*, *containerd*, *CRI-O*.
+|===
+
+#### Kubernetes Dashboard
+
+Kubernetes dashboard is a web UI for managing Kubernetes cluster.
+It allows users to manage and troubleshoot applications running in the cluster, 
+as well as the cluster itself.
+
+
 
