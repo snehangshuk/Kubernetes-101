@@ -490,6 +490,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_azure_kubernetes_service_aks">6.4. Azure Kubernetes Service (AKS)</a></li>
 </ul>
 </li>
+<li><a href="#_kubernetes_architecture">7. Kubernetes Architecture</a></li>
 <li><a href="#_references">References</a></li>
 </ul>
 </div>
@@ -1355,6 +1356,70 @@ not for the masters.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_kubernetes_architecture">7. Kubernetes Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In previous section we saw that Kubernetes is an orchestration service that simplifies the
+deployment, management, and scaling of containerized applications. One of the main advantages
+of using Kubernetes is that it uses several nodes to ensure the resiliency and scalability of its
+managed applications. Kubernetes forms a cluster of node servers that run containers and are
+centrally managed by a set of master servers. A server can act as both a server and a node, but
+those roles are usually segregated for increased stability.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Kubernetes Terminology</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">TERM</th>
+<th class="tableblock halign-left valign-top">DEFINITION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A server that hosts applications in a Kubernetes cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Master Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A node server that manages the <strong>control plane</strong> in a Kubernetes cluster.
+Master nodes provide basic cluster services such as APIs or controllers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Worker Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Also named <strong>Compute Node</strong>, worker nodes execute workloads for the cluster.
+Application pods are scheduled onto worker nodes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resources are any kind of component definition managed by Kubernetes.
+Resources contain the configuration of the managed component (for
+example, the role assigned to a node), and the current state of the
+component (for example, if the node is available).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A controller is a Kubernetes process that watches resources and makes
+changes attempting to move the current state towards the desired state.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A key-value pair that can be assigned to any Kubernetes resource. Selectors
+use labels to filter eligible resources for scheduling and other operations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A scope for Kubernetes resources and processes, so that resources with the
+same name can be used in different boundaries.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_references">References</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -1375,7 +1440,7 @@ not for the masters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-06 11:40:12 +0530
+Last updated 2020-10-06 11:57:25 +0530
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
