@@ -9,13 +9,15 @@ _Minikube_ is a tool that makes it easy to run Kubernetes locally.
 Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on your laptop for users looking to try out Kubernetes or develop with it day-to-day. Follow link:https://kubernetes.io/docs/tasks/tools/install-minikube/[Install Minikube] to install on your laptop.
 
 Some of widely adopted distributions are:
-- _Red Hat OpenShift_
-- _Rancher_
+
+- Red Hat OpenShift
+- Rancher
 
 Other managed Kubernetes cluster provided by other cloud providers are:
-- _Amazon EKS_
-- _Azure Red Hat OpenShift Managed Service_
-- _Google Kubernetes Engine (GKE)_  
+
+- Amazon EKS
+- Azure Red Hat OpenShift Managed Service
+- Google Kubernetes Engine (GKE)
 
 ### Creating AKS Cluster
 
