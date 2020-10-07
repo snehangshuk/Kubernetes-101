@@ -3,20 +3,19 @@
 You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster.
 This lab uses managed cluster provided by Azure using the Azure Kubernetes Service (AKS).
 
-Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you quickly deploy and manage clusters.
-Use link:https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#create-an-aks-cluster[Create an AKS cluster] to create a AKS cluster.
+_Azure Kubernetes Service (AKS)_ is a managed Kubernetes service that lets you quickly deploy and manage clusters.
 
 _Minikube_ is a tool that makes it easy to run Kubernetes locally. 
 Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on your laptop for users looking to try out Kubernetes or develop with it day-to-day. Follow link:https://kubernetes.io/docs/tasks/tools/install-minikube/[Install Minikube] to install on your laptop.
 
 Some of widely adopted distributions are:
-* _Red Hat OpenShift_
-* _Rancher_
+- _Red Hat OpenShift_
+- _Rancher_
 
 Other managed Kubernetes cluster provided by other cloud providers are:
-* _Amazon EKS_
-* _Azure Red Hat OpenShift Managed Service_
-* _Google Kubernetes Engine (GKE)_  
+- _Amazon EKS_
+- _Azure Red Hat OpenShift Managed Service_
+- _Google Kubernetes Engine (GKE)_  
 
 ### Creating AKS Cluster
 
@@ -28,13 +27,13 @@ $ az --version
 
 The following steps creates a cluster named `myAKSCluster` with two nodes:
 
-.Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.
+. Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.
 +
 [source,bash]
 ----
 $ az group create --name myResourceGroup --location eastus
 ----
-.Create AKS cluster. This will take several minutes to complete.
+. Create AKS cluster. This will take several minutes to complete.
 +
 [source,bash]
 ----
@@ -43,13 +42,13 @@ $ az aks create --resource-group myResourceGroup \
     --node-count 2 \
     --enable-addons monitoring --generate-ssh-keys
 ----
-.Connect to the cluster. Install `kubectl` locally, use the `az aks install-cli` command:
+. Connect to the cluster. Install `kubectl` locally, use the `az aks install-cli` command:
 +
 [source,bash]
 ----
 $ az aks install-cli
 ----
-.Downloads credentials and configures the Kubernetes CLI.
+. Downloads credentials and configures the Kubernetes CLI.
 +
 [source,bash]
 ----

@@ -1647,8 +1647,7 @@ The <code>kubectl api-resources</code> list all the resource types supported by 
 This lab uses managed cluster provided by Azure using the Azure Kubernetes Service (AKS).</p>
 </div>
 <div class="paragraph">
-<p>Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you quickly deploy and manage clusters.
-Use <a href="https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#create-an-aks-cluster">Create an AKS cluster</a> to create a AKS cluster.</p>
+<p><em>Azure Kubernetes Service (AKS)</em> is a managed Kubernetes service that lets you quickly deploy and manage clusters.</p>
 </div>
 <div class="paragraph">
 <p><em>Minikube</em> is a tool that makes it easy to run Kubernetes locally.
@@ -1656,14 +1655,14 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
 </div>
 <div class="paragraph">
 <p>Some of widely adopted distributions are:
-* <em>Red Hat OpenShift</em>
-* <em>Rancher</em></p>
+- <em>Red Hat OpenShift</em>
+- <em>Rancher</em></p>
 </div>
 <div class="paragraph">
 <p>Other managed Kubernetes cluster provided by other cloud providers are:
-* <em>Amazon EKS</em>
-* <em>Azure Red Hat OpenShift Managed Service</em>
-* <em>Google Kubernetes Engine (GKE)</em></p>
+- <em>Amazon EKS</em>
+- <em>Azure Red Hat OpenShift Managed Service</em>
+- <em>Google Kubernetes Engine (GKE)</em></p>
 </div>
 <div class="sect2">
 <h3 id="_creating_aks_cluster">9.1. Creating AKS Cluster</h3>
@@ -1678,19 +1677,18 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
 <div class="paragraph">
 <p>The following steps creates a cluster named <code>myAKSCluster</code> with two nodes:</p>
 </div>
-<div class="paragraph">
-<div class="title">Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.</div>
-<p>+</p>
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az group create --name myResourceGroup --location eastus</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">Create AKS cluster. This will take several minutes to complete.</div>
-<p>+</p>
-</div>
+</li>
+<li>
+<p>Create AKS cluster. This will take several minutes to complete.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks create --resource-group myResourceGroup \
@@ -1699,23 +1697,24 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
     --enable-addons monitoring --generate-ssh-keys</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">Connect to the cluster. Install <code>kubectl</code> locally, use the <code>az aks install-cli</code> command:</div>
-<p>+</p>
-</div>
+</li>
+<li>
+<p>Connect to the cluster. Install <code>kubectl</code> locally, use the <code>az aks install-cli</code> command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks install-cli</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">Downloads credentials and configures the Kubernetes CLI.</div>
-<p>+</p>
-</div>
+</li>
+<li>
+<p>Downloads credentials and configures the Kubernetes CLI.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster</code></pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
