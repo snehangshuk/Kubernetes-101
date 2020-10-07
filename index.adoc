@@ -35,6 +35,8 @@ include::sections/kubernetes-overview.adoc[]
 
 include::sections/kubernetes-arch.adoc[]
 
+include::sections/create-cluster.adoc[]
+
 [bibliography]
 
 == References

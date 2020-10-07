@@ -497,8 +497,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_control_plane_components">7.1.1. Control Plane Components</a></li>
 <li><a href="#_node_components">7.1.2. Node Components</a></li>
 <li><a href="#_kubernetes_dashboard">7.1.3. Kubernetes Dashboard</a></li>
+<li><a href="#_kubernetes_cli">7.1.4. Kubernetes CLI</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#_kubernetes_resource_types">8. Kubernetes Resource Types</a></li>
+<li><a href="#_creating_your_cluster">9. Creating your Cluster</a>
+<ul class="sectlevel2">
+<li><a href="#_accessing_the_cluster">9.1. Accessing the Cluster</a></li>
 </ul>
 </li>
 <li><a href="#_references">References</a></li>
@@ -1536,6 +1543,142 @@ It allows users to manage and troubleshoot applications running in the cluster,
 as well as the cluster itself.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_kubernetes_cli">7.1.4. Kubernetes CLI</h4>
+<div class="paragraph">
+<p>The <code>kubectl</code> command line tool lets you control Kubernetes clusters.
+Use the following syntax to run kubectl commands from your terminal window:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl [command] [TYPE] [NAME] [flags]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where,
+* <code>command</code>: Specifies the operation that you want to perform on one or more resources,
+  for example <em>create</em>, <em>get</em>, <em>describe</em>, <em>delete</em>.
+* <code>TYPE</code>: Specifies the resource type.
+* <code>NAME</code>: Specifies the name of the resource.</p>
+</div>
+<div class="paragraph">
+<p>For example, to get nodes in a Kubernetes cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl get nodes
+NAME          STATUS   ROLES    AGE   VERSION
+kube-master   Ready    master   90d   v1.18.5
+kube-node1    Ready    &lt;none&gt;   90d   v1.18.5
+kube-node2    Ready    &lt;none&gt;   90d   v1.18.5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For configuration, <code>kubectl</code> looks for a file named config in the <code>$HOME/.kube</code> directory.
+For installation instructions see <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">installing kubectl</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubernetes_resource_types">8. Kubernetes Resource Types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes has six main resource types that can be created and configured using a YAML or a
+JSON file:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Pods(<strong>po</strong>)</dt>
+<dd>
+<p>Represent a collection of containers that share resources, such as IP addresses and persistent
+storage volumes. It is the basic unit of work for Kubernetes.</p>
+</dd>
+<dt class="hdlist1">Services(<strong>svc</strong>)</dt>
+<dd>
+<p>Define a single IP/port combination that provides access to a pool of pods. By default,
+services connect clients to pods in a round-robin fashion.</p>
+</dd>
+<dt class="hdlist1">Replication Controllers(<strong>rc</strong>)</dt>
+<dd>
+<p>A Kubernetes resource that defines how pods are replicated (horizontally scaled) into
+different nodes. Replication controllers are a basic Kubernetes service to provide high
+availability for pods and containers.</p>
+</dd>
+<dt class="hdlist1">Persistent Volumes(<strong>pv</strong>)</dt>
+<dd>
+<p>Define storage areas to be used by Kubernetes pods.</p>
+</dd>
+<dt class="hdlist1">Persistent Volume Claims(<strong>pvc</strong>)</dt>
+<dd>
+<p>Represent a request for storage by a pod. PVCs links a PV to a pod so its containers can make
+use of it, usually by mounting the storage into the container&#8217;s file system.</p>
+</dd>
+<dt class="hdlist1">ConfigMaps(<strong>cm</strong>) and Secrets</dt>
+<dd>
+<p>Contains a set of keys and values that can be used by other resources. ConfigMaps and
+Secrets are usually used to centralize configuration values used by several resources. Secrets
+differ from ConfigMaps maps in that Secrets' values are always encoded (not encrypted) and
+their access is restricted to fewer authorized users.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The <code>kubectl api-resources</code> list all the resource types supported by Kubernetes.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_your_cluster">9. Creating your Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster.
+This lab uses <a href="https://labs.play-with-k8s.com/">Play with Kubernetes</a>, which allows users to run K8s clusters in a matter of seconds.</p>
+</div>
+<div class="paragraph">
+<p>Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you quickly deploy and manage clusters.
+Use <a href="https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#create-an-aks-cluster">Create an AKS cluster</a> to create a AKS cluster.</p>
+</div>
+<div class="paragraph">
+<p><em>Minikube</em> is a tool that makes it easy to run Kubernetes locally.
+Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on your laptop for users looking to try out Kubernetes or develop with it day-to-day. Follow <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">Install Minikube</a> to install on your laptop.</p>
+</div>
+<div class="paragraph">
+<p>Some of widely adopted distributions are:
+* <em>Red Hat OpenShift</em>
+* <em>Rancher</em></p>
+</div>
+<div class="paragraph">
+<p>Other managed Kubernetes cluster provided by other cloud providers are:
+* <em>Amazon EKS</em>
+* <em>Azure Red Hat OpenShift Managed Service</em>
+* <em>Google Kubernetes Engine (GKE)</em></p>
+</div>
+<div class="sect2">
+<h3 id="_accessing_the_cluster">9.1. Accessing the Cluster</h3>
+<div class="paragraph">
+<p>To verify the connection to your cluster, use the <code>kubectl</code> command to list cluster information.
+From the terminal within Play with Kubernetes, use the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl cluster-info
+Kubernetes master is running at https://192.168.0.13:6443
+KubeDNS is running at https://192.168.0.13:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1560,7 +1703,7 @@ as well as the cluster itself.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-06 11:57:25 +0530
+Last updated 2020-10-06 17:17:49 +0530
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
