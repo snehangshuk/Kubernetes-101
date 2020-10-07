@@ -1,7 +1,7 @@
-## Creating your Cluster
+## Kubernetes Cluster
 
 You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster.
-This lab uses link:https://labs.play-with-k8s.com/[Play with Kubernetes], which allows users to run K8s clusters in a matter of seconds.
+This lab uses managed cluster provided by Azure using the Azure Kubernetes Service (AKS).
 
 Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you quickly deploy and manage clusters.
 Use link:https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#create-an-aks-cluster[Create an AKS cluster] to create a AKS cluster.
@@ -18,15 +18,51 @@ Other managed Kubernetes cluster provided by other cloud providers are:
 * _Azure Red Hat OpenShift Managed Service_
 * _Google Kubernetes Engine (GKE)_  
 
-### Accessing the Cluster
+### Creating AKS Cluster
 
-To verify the connection to your cluster, use the `kubectl` command to list cluster information.
-From the terminal within Play with Kubernetes, use the following command:
+Install Azure CLI locally, and login using Azure credentials. If you need to install or upgrade, see link:https://docs.microsoft.com/en-us/cli/azure/install-azure-cli[Install Azure CLI]. Verify the version installed is 2.0.64 or later.
 [source,bash]
 ----
-$ kubectl cluster-info
-Kubernetes master is running at https://192.168.0.13:6443
-KubeDNS is running at https://192.168.0.13:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+$ az --version
+----
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+The following steps creates a cluster named `myAKSCluster` with two nodes:
+
+.Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.
++
+[source,bash]
+----
+$ az group create --name myResourceGroup --location eastus
+----
+.Create AKS cluster. This will take several minutes to complete.
++
+[source,bash]
+----
+$ az aks create --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 2 \
+    --enable-addons monitoring --generate-ssh-keys
+----
+.Connect to the cluster. Install `kubectl` locally, use the `az aks install-cli` command:
++
+[source,bash]
+----
+$ az aks install-cli
+----
+.Downloads credentials and configures the Kubernetes CLI.
++
+[source,bash]
+----
+$ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+----
+
+### Accessing the Cluster
+
+To verify the connection to your cluster, use the `kubectl` command to list cluster nodes.
+[source,bash]
+----
+$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE   VERSION
+aks-nodepool1-26004593-vmss000000   Ready    agent   34m   v1.17.11
+aks-nodepool1-26004593-vmss000001   Ready    agent   34m   v1.17.11
 ----

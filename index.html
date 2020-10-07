@@ -503,9 +503,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_kubernetes_resource_types">8. Kubernetes Resource Types</a></li>
-<li><a href="#_creating_your_cluster">9. Creating your Cluster</a>
+<li><a href="#_kubernetes_cluster">9. Kubernetes Cluster</a>
 <ul class="sectlevel2">
-<li><a href="#_accessing_the_cluster">9.1. Accessing the Cluster</a></li>
+<li><a href="#_creating_aks_cluster">9.1. Creating AKS Cluster</a></li>
+<li><a href="#_accessing_the_cluster">9.2. Accessing the Cluster</a></li>
 </ul>
 </li>
 <li><a href="#_references">References</a></li>
@@ -1639,11 +1640,11 @@ The <code>kubectl api-resources</code> list all the resource types supported by 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creating_your_cluster">9. Creating your Cluster</h2>
+<h2 id="_kubernetes_cluster">9. Kubernetes Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster.
-This lab uses <a href="https://labs.play-with-k8s.com/">Play with Kubernetes</a>, which allows users to run K8s clusters in a matter of seconds.</p>
+This lab uses managed cluster provided by Azure using the Azure Kubernetes Service (AKS).</p>
 </div>
 <div class="paragraph">
 <p>Azure Kubernetes Service (AKS) is a managed Kubernetes service that lets you quickly deploy and manage clusters.
@@ -1665,18 +1666,69 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
 * <em>Google Kubernetes Engine (GKE)</em></p>
 </div>
 <div class="sect2">
-<h3 id="_accessing_the_cluster">9.1. Accessing the Cluster</h3>
+<h3 id="_creating_aks_cluster">9.1. Creating AKS Cluster</h3>
 <div class="paragraph">
-<p>To verify the connection to your cluster, use the <code>kubectl</code> command to list cluster information.
-From the terminal within Play with Kubernetes, use the following command:</p>
+<p>Install Azure CLI locally, and login using Azure credentials. If you need to install or upgrade, see <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Install Azure CLI</a>. Verify the version installed is 2.0.64 or later.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl cluster-info
-Kubernetes master is running at https://192.168.0.13:6443
-KubeDNS is running at https://192.168.0.13:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following steps creates a cluster named <code>myAKSCluster</code> with two nodes:</p>
+</div>
+<div class="paragraph">
+<div class="title">Create resource group. An Azure resource group is a logical group in which Azure resources are deployed and managed.</div>
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az group create --name myResourceGroup --location eastus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Create AKS cluster. This will take several minutes to complete.</div>
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks create --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 2 \
+    --enable-addons monitoring --generate-ssh-keys</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Connect to the cluster. Install <code>kubectl</code> locally, use the <code>az aks install-cli</code> command:</div>
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks install-cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Downloads credentials and configures the Kubernetes CLI.</div>
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accessing_the_cluster">9.2. Accessing the Cluster</h3>
+<div class="paragraph">
+<p>To verify the connection to your cluster, use the <code>kubectl</code> command to list cluster nodes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE   VERSION
+aks-nodepool1-26004593-vmss000000   Ready    agent   34m   v1.17.11
+aks-nodepool1-26004593-vmss000001   Ready    agent   34m   v1.17.11</code></pre>
 </div>
 </div>
 </div>
