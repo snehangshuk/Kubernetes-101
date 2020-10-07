@@ -147,7 +147,7 @@ kube-node2    Ready    <none>   90d   v1.18.5
 For configuration, `kubectl` looks for a file named config in the `$HOME/.kube` directory.
 For installation instructions see link:https://kubernetes.io/docs/tasks/tools/install-kubectl/[installing kubectl].
 
-## Kubernetes Resource Types
+### Kubernetes Resource Types
 
 Kubernetes has six main resource types that can be created and configured using a YAML or a
 JSON file:

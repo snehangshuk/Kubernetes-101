@@ -500,13 +500,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_kubernetes_cli">7.1.4. Kubernetes CLI</a></li>
 </ul>
 </li>
+<li><a href="#_kubernetes_resource_types">7.2. Kubernetes Resource Types</a></li>
 </ul>
 </li>
-<li><a href="#_kubernetes_resource_types">8. Kubernetes Resource Types</a></li>
-<li><a href="#_kubernetes_cluster">9. Kubernetes Cluster</a>
+<li><a href="#_kubernetes_cluster">8. Kubernetes Cluster</a>
 <ul class="sectlevel2">
-<li><a href="#_creating_aks_cluster">9.1. Creating AKS Cluster</a></li>
-<li><a href="#_accessing_the_cluster">9.2. Accessing the Cluster</a></li>
+<li><a href="#_creating_aks_cluster">8.1. Creating AKS Cluster</a></li>
+<li><a href="#_accessing_the_cluster">8.2. Accessing the Cluster</a></li>
 </ul>
 </li>
 <li><a href="#_references">References</a></li>
@@ -1580,11 +1580,8 @@ For installation instructions see <a href="https://kubernetes.io/docs/tasks/tool
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_kubernetes_resource_types">8. Kubernetes Resource Types</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_kubernetes_resource_types">7.2. Kubernetes Resource Types</h3>
 <div class="paragraph">
 <p>Kubernetes has six main resource types that can be created and configured using a YAML or a
 JSON file:</p>
@@ -1639,8 +1636,9 @@ The <code>kubectl api-resources</code> list all the resource types supported by 
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_kubernetes_cluster">9. Kubernetes Cluster</h2>
+<h2 id="_kubernetes_cluster">8. Kubernetes Cluster</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can deploy a Kubernetes cluster on a local machine, cloud, on-prem datacenter, or choose a managed Kubernetes cluster.
@@ -1683,7 +1681,7 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_creating_aks_cluster">9.1. Creating AKS Cluster</h3>
+<h3 id="_creating_aks_cluster">8.1. Creating AKS Cluster</h3>
 <div class="paragraph">
 <p>Install Azure CLI locally, and login using Azure credentials. If you need to install or upgrade, see <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Install Azure CLI</a>. Verify the version installed is 2.0.64 or later.</p>
 </div>
@@ -1736,7 +1734,7 @@ Minikube runs a single-node Kubernetes cluster inside a Virtual Machine (VM) on 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_accessing_the_cluster">9.2. Accessing the Cluster</h3>
+<h3 id="_accessing_the_cluster">8.2. Accessing the Cluster</h3>
 <div class="paragraph">
 <p>To verify the connection to your cluster, use the <code>kubectl</code> command to list cluster nodes.</p>
 </div>
